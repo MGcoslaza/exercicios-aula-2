@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício 8</title>
+    <p>Escreva uma função que leia o código de origem de um produto, via prompt, e imprima na tela a região de sua procedência conforme a tabela abaixo:
+
+    Código 1: Sul
+    Código 2: Norte
+    Código 3: Leste
+    Código 4: Oeste
+    Código 5 ou 6: Nordeste
+    Código 7, 8 ou 9: Sudeste
+    Código 10: Centro-Oeste
+    Código 11: Noroeste
+    Observação: Caso o código não seja nenhum dos especificados o produto deve ser encarado como Importado.
+  </p>
+  </head>
+  <body>
+    <script>
+    function convertCodigo (decimal){
+      if (digitar==1){
+        alert ('Sul');
+      } else if (digitar==2){
+        alert ('Norte');
+      } else if (digitar==3){
+        alert ('Leste');
+      } else if (digitar==4){
+        alert ('Oeste');
+      } else if (digitar>=5 && digitar<=6){
+        alert('Nordeste');
+      } else if (digitar>=7 && digitar<=9){
+        alert ('Sudeste');
+      } else if (digitar==10){
+        alert ('Centro-Oeste');
+      } else if (digitar==11){
+        alert ('Noroeste');
+      } else {
+        alert ('Importado');
+      }
+    }
+    var digitar = prompt('Digite o código de origem');
+      alert(convertCodigo(parseInt(digitar)));
+    </script>
+  </body>
+</html>
