@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>exercicio 14</title>
+ <p> Crie um objeto que possua uma propriedade números, do tipo array. Esse objeto deve possuir métodos:
+
+        ok que adicione um número a propriedade números;
+        ok que receba um número por parâmetro e verifique se ele está presente ou não na propriedade números;
+        ok que remova um número já existente ou alerte caso o número não esteja presente na propriedade números;
+        ok que retorne os números positivos existentes na propriedade números;
+        ok que retorne os números negativos existentes na propriedade números;
+        ok que retorne os números pares existentes na propriedade números;
+        ok que retorne os números impares existentes na propriedade números;
+        ok que retorne a soma dos números existentes na propriedade números;
+        ok Observação: Não deve ser possível adicionar valores não números na propriedade números;
+    </p>
+    <script>
+        var objeto = {
+            numeros = []
+        };
+        
+        function adicionarNumero(numero){
+            if(isNaN(numero)){
+                alert("Não é um número");
+            }else{
+                objeto.numeros.push(numero);
+            }
+        }
+
+        function estaPresente(numero){
+            // if(objeto.numeros.indexOf(numero) != -1){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+
+            return objeto.numeros.indexOf(numero) != -1;            
+        }
+
+        function remover(numero){
+            if(estaPresente(numero)){
+                objeto.numeros.pop(numero);
+            }else{
+                alert('O número não está presente na propriedade números.');
+            }
+        }
+
+        function retornarNumerosPositivos(){
+            var positivos = [];
+            for (var i = 0; i < objeto.numeros.length; i++) {
+                if(objeto.numero[i] >= 0){
+                    positivos.push(objeto.numero[i]);
+                }               
+            }
+            return positivos;
+        }
+
+        function retornarNumerosNegativos(){
+            var negativos = [];
+            for (var i = 0; i < objeto.numeros.length; i++) {
+                if(objeto.numero[i] < 0){
+                    negativos.push(objeto.numero[i]);
+                }               
+            }
+            return negativos;
+        }
+
+        function retornarNumerosPares(){
+            var pares = [];
+            for (var i = 0; i < objeto.numeros.length; i++) {
+                if(objeto.numero[i]/2 == 0){
+                    pares.push(objeto.numero[i]);
+                }               
+            }
+            return pares;
+        }
+
+        function retornarNumerosImpares(){
+            var impares = [];
+            for (var i = 0; i < objeto.numeros.length; i++) {
+                if(objeto.numero[i]/2 != 0){
+                    impares.push(objeto.numero[i]);
+                }               
+            }
+            return impares;
+        }
+
+        function retornarSomaDosNumeros(){
+            var soma = 0;
+            for (var i = 0; i < objeto.numeros.length; i++) {
+                soma = soma + objeto.numero[i];           
+            }
+            return soma;
+        }
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

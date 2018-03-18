@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício 10</title>
+  </head>
+  <body>
+    <p>  Escreva uma função que leia 10 valores numéricos, via input, e armazene-os num array. </p>
+    <form id="formulario">
+      <input type="text" id="iValor1" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor2" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor3" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor4" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor5" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor6" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor7" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor8" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor9" placeholder="Insira um valor"/><br/>
+      <input type="text" id="iValor10" placeholder="Insira um valor"/><br/>
+      <input name="iButton" id="iButton" value="enviar" type="button" onclick="armarzenarValoresEmUmArray()" />
+    </form>
+    <script>
+      function armarzenarValoresEmUmArray(){
+        //Cria um array
+        var valores =[];
+        //Insere os valores no array
+        valores.push (iValor1.value);
+        valores.push (iValor2.value);
+        valores.push (iValor3.value);
+        valores.push (iValor4.value);
+        valores.push (iValor5.value);
+        valores.push (iValor6.value);
+        valores.push (iValor7.value);
+        valores.push (iValor8.value);
+        valores.push (iValor9.value);
+        valores.push (iValor10.value);
+        //exibe o array no console para ver se deu certo
+        console.log(valores);
+      }
+      </script>
+  </body>
+</html>

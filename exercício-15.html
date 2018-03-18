@@ -4,19 +4,28 @@
     <title>Exercício 15</title>
     <p>Escreva um código que atenda os sequintes requisitos:
 
-    Possua um objeto cliente, com as propriedades nome, sexo, data de nascimento, e endereço (sendo um objeto com as propriedades cep, logradouro, número,
-    complemento, bairro, cidade, estado). Deve possuir um método que alerte todas as informações do cliente.
-    Possua um objeto produto com as propriedades titulo, descrição e valor. Deve possuir um método que alerte seu nome e valor.
-    Possua um objeto venda com as propriedades data, cliente, produtos, desconto e acréscimo. Deve existir um método que receba um objeto cliente,
-     e adicione-o a propriedade cliente. Deve ser possível adicionar n produtos, através de um método, que receba um objeto produto e uma quantidade,
-     e adicione-os na propriedade produtos. Deve existir um método que retorne o um objeto com as propriedades valor dos produtos, e valor total, sendo este,
-      a soma dos valores produtos vezes a quantidade, menos o desconto, mais o acréscimo.
+    ok Possua um objeto cliente, com as propriedades nome, sexo, data de nascimento, e endereço (sendo um objeto com as propriedades cep, logradouro, número, complemento, bairro, cidade, estado). 
+    
+    ok Deve possuir um método que alerte todas as informações do cliente.
+    
+    ok Possua um objeto produto com as propriedades titulo, descrição e valor. 
+    
+    ok Deve possuir um método que alerte seu nome e valor.
+    
+    ok Possua um objeto venda com as propriedades data, cliente, produtos, desconto e acréscimo. 
+    
+    ok Deve existir um método que receba um objeto cliente, e adicione-o a propriedade cliente. 
+    
+    ok Deve ser possível adicionar n produtos, através de um método, que receba um objeto produto e uma quantidade, e adicione-os na propriedade produtos. 
+    
+    Deve existir um método que retorne o um objeto com as propriedades valor dos produtos, e valor total, sendo este, a soma dos valores produtos vezes a quantidade, menos o desconto, mais o acréscimo.
  </p>
   </head>
   <body>
     <script>
+      //Monta o objeto cliente
       var cliente = {
-        nome: "Cliente",
+        nome: "Nome do Cliente",
         sexo: "Feminino",
         data: "25/03/1992",
         endereco: {
@@ -27,37 +36,112 @@
           bairro: "Jardim das aves",
           cidade: "Maringá",
           estado: "Paraná",
+        }
       }
-    }
-    function showInfo() {
-      console.log("Cliente " + cliente.nome + " Sexo " + cliente.sexo + " Data de Nascimento " + cliente.data + " Endereço: " + cliente.endereco);
-    }
-    showInfo();
-      var produto={
+      //Função que mostra as informações de um cliente qualquer que é recebido via parâmetro
+      function showInfo(cliente) {
+        alert("Cliente " + cliente.nome + ", Sexo " + cliente.sexo + ", Data de Nascimento " + cliente.data + ", Endereço: " + cliente.endereco);
+      }
+      //Monta o objeto para o produto a
+      var produtoA = {
         titulo: "produto A",
         descrição: "lalala",
         valor: "1000",
       }
-      function showInfo(){
+      //monta o objeto para o produto b
+      var produtoB = {
+        titulo: "produto B",
+        descrição: "lalalaB",
+        valor: "100",
+      }
+      //Função que mostra os dados de um produto recebido por parâmetro
+      function showProductInfo(produto){
         alert("Produto " + produto.titulo+", Valor "+ produto.valor);
       }
-      showInfo();
-      var produto = prompt ('Digite o produto desejado');
-      var quantidade = prompt ('Digite a quantidade de produto');
-      var desconto = prompt ('Digite o desconto');
-      var acrescimo = prompt ('Digite o acrescimo');
+      //Monta o objeto venda
       var venda= {
         data: "12/03/2018",
-        cliente: cliente,
-        produto: produto,
-        desconto: desconto,
-        acrescimo: acrescimo,
-        quantidade: quantidade,
+        cliente: '',
+        produtos: [],
+        desconto: 50,
+        acrescimo: 100,
         valor: "x"
-        }
-      function showInfo(){
-        alert("O Produto selecionado foi " + this.produto+ ", com um custo de " + this.valor+" a unidade. o Valor total foi de "+this.valor*this.quantidade-this.desconto+this.acrescimo);
       }
+      //Função que adiciona cliente a uma venda
+      function adicionarClienteAVenda(cliente){
+        venda.cliente = cliente;
+      }
+      //Chamada do método que adiciona o cliente à venda
+      adicionarClienteAVenda(cliente);
+      //Função que insere um produto na venda com sua quantidade
+      function insereProdutoNaVenda(produto, quantidade){
+        var produtoDaVenda = {
+          produto: produto,
+          quantidade: quantidade
+        }
+
+        venda.produtos.push(produtoDaVenda);
+      }
+		//Declaração da função de venda
+      function sale(){
+         console.log("Produtos da venda:");
+        
+			var vendaFinal = {
+				valores: [],
+				valorTotal: 0
+
+			};
+
+         var valorTotalDaVenda = 0;
+
+         for (var i = 0; i < venda.produtos.length; i++) {
+				console.log("");
+				produtoAnalisado = venda.produtos[i];
+				console.log("Produto: " + produtoAnalisado.produto.titulo);
+				console.log("Quantidade: " + produtoAnalisado.quantidade);
+
+				var precoDoProduto = produtoAnalisado.produto.valor * produtoAnalisado.quantidade;
+
+				vendaFinal.valores.push(precoDoProduto);
+
+				valorTotalDaVenda = valorTotalDaVenda + precoDoProduto;
+				console.log("Preço do produto na venda: " + precoDoProduto);
+         }
+
+			console.log("");
+         console.log("Valor parcial da venda: " + valorTotalDaVenda);
+
+
+
+			console.log("");
+         console.log("Acrescimo: " + venda.acrescimo);
+         console.log("Desconto: " + venda.desconto);
+
+			valorTotalDaVenda = valorTotalDaVenda + venda.acrescimo - venda.desconto;
+
+			console.log("");
+         console.log("Valor total da venda: " + valorTotalDaVenda);
+
+			vendaFinal.valorTotal = valorTotalDaVenda;
+       
+			console.log(vendaFinal);
+        // alert("O Produto selecionado foi " + this.produto+ ", com um custo de " + this.valor+" a unidade. o Valor total foi de "+this.valor*this.quantidade-this.desconto+this.acrescimo);
+
+		  return vendaFinal;
+      }
+      
+
+      //Chamada da função para mostrar os dados do cliente da variável "cliente"
+      showInfo(cliente);
+      //Chamada do método para mostrar os dados do produto a
+      showProductInfo(produtoA);
+      //Chamada do método para mostrar os dados do produto b
+      showProductInfo(produtoB);
+      //Insere os produtos a e b na venda
+      insereProdutoNaVenda(produtoA, 2);
+      insereProdutoNaVenda(produtoB, 3);
+		//Chamada da função de venda
+		sale();
 
     </script>
   </body>
